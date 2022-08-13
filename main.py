@@ -55,7 +55,23 @@ def algorytm(filepath):
                         najwięcej[1] = dict2[i][2] / dict2[i][0]
                         najwięcej[0] = i
         najwięcej[1] = najwięcej[1] * 100
-        print("Największy odsetek piratów znajduje się w " + str(najwięcej[0]) + ", wynosił on " + str(round(najwięcej[1], 2)) + " %")
+        new_window = Tk()
+        new_window.title("Program odszukujący piratów drogowych")
+        window.destroy()
+        label = Label(new_window,
+                      text="Największy odsetek piratów znajduje się w " + str(najwięcej[0]) + ", wynosił on " + str(
+                              round(najwięcej[1], 2)) + " %",
+                      font=('Arial', 20, 'bold'),
+                      fg='#00FF00',
+                      bg="black",
+                      relief=RAISED,
+                      width=70,
+                      height=4,
+                      bd=10,
+                      padx=20,  # odstępy na osi x
+                      pady=20  # odstępy na osi y
+                      )  # stworzenie label
+        label.pack()  # dodanie label do okna
 
 def openFile():
         filepath = filedialog.askopenfilename()
@@ -68,24 +84,23 @@ def openFile():
 from tkinter import *
 
 window = Tk()
+window.title("Program odszukujący piratów drogowych")
+window.config(background="black")   # zmiana koloru tła
 
-
-'''label = Label(window, text="Największy odsetek piratów znajduje się w " + str( najwięcej[0]) + ", wynosił on " + str(round(najwięcej[1],2)) + " %",
-              font=('Arial',20,'bold'),
-              fg='#00FF00',
-              bg="black",
-              relief=RAISED,
-              width= 70,
-              height= 10,
-              bd=10,
-              padx=20, # odstępy na osi x
-              pady=20 # odstępy na osi y
-              )  # stworzenie label
-label.pack() # dodanie label do okna
-# label.place(x=0,y=0) # dodanie label w konkretnym miejscu okna'''
-
+label = Label(window,
+                      text="Otwórz plik w którym znajdują się dane dotyczące prędkości ",
+                      font=('Arial', 10, 'bold'),
+                      fg='#00FF00',
+                      bg="black",
+                      width=50,
+                      height=2,
+                      bd=10,
+                      padx=20,  # odstępy na osi x
+                      pady=20  # odstępy na osi y
+                      )  # stworzenie label
+label.pack(side=TOP)
 button = Button(text="Open file", command=openFile)
-button.pack()
+button.pack(side=BOTTOM)
 
 window.mainloop()
 
